@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Complaint - CivicPulse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="logo-container">
+      <span class="logo-icon">🏛️</span>
+      <div class="logo-text">
+        <h1>CivicPulse</h1>
+        <p>Smart Citizen Complaint System</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="submit.html">Submit Complaint</a></li>
+      <li><a href="track.html" class="active">Track Complaint</a></li>
+      <li><a href="login.html">Officer Portal <span class="officer-badge">Officer</span></a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <!-- Search Box -->
+    <div class="card" style="max-width: 650px; margin: 0 auto 2rem;">
+      <h2 class="card-title">🔍 Track Your Complaint</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">
+        Enter your unique Complaint ID (e.g. CMP-1001) to view live progress.
+      </p>
+
+      <form id="trackForm" onsubmit="handleTrackSubmit(event)" style="display: flex; gap: 0.5rem;">
+        <input 
+          type="text" 
+          id="searchId" 
+          class="form-control" 
+          placeholder="Enter Complaint ID (e.g. CMP-1001)" 
+          required 
+          style="flex: 1;">
+        <button type="submit" class="btn btn-primary">Track Status</button>
+      </form>
+    </div>
+
+    <!-- Complaint Details & Timeline Card (Hidden until searched) -->
+    <div id="trackResultCard" class="card" style="max-width: 650px; margin: 0 auto; display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+        <div>
+          <h3 id="trackId" style="color: var(--primary-color);">-</h3>
+          <p id="trackDate" style="font-size: 0.85rem; color: var(--text-muted);">-</p>
+        </div>
+        <div id="trackPriorityBadge">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.25rem;">Description</h4>
+        <p id="trackDesc" style="font-weight: 500;">-</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; background: #f8fafc; padding: 1rem; border-radius: var(--radius);">
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Category</span>
+          <p id="trackCategory" style="font-weight: 600;">-</p>
+        </div>
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Department</span>
+          <p id="trackDept" style="font-weight: 600;">-</p>
+        </div>
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Location</span>
+          <p id="trackLoc" style="font-weight: 600;">-</p>
+        </div>
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Current Status</span>
+          <p id="trackStatus">-</p>
+        </div>
+      </div>
+
+      <!-- Status Timeline -->
+      <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Status Timeline</h4>
+      <ul class="timeline" id="trackTimeline">
+        <!-- Dynamically rendered -->
+      </ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 CivicPulse Hackathon Prototype</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

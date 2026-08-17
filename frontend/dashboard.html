@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Officer Dashboard - CivicPulse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="logo-container">
+      <span class="logo-icon">🏛️</span>
+      <div class="logo-text">
+        <h1>CivicPulse Dashboard</h1>
+        <p>Government Officer Portal</p>
+      </div>
+    </div>
+    <ul class="nav-links" style="align-items: center;">
+      <li><a href="index.html">Home Portal</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li id="officerInfo" style="font-size: 0.85rem; color: #cbd5e1; display: flex; align-items: center; gap: 0.75rem;">
+        <!-- Populated via JavaScript -->
+      </li>
+    </ul>
+  </header>
+
+  <main class="container" style="max-width: 1200px;">
+    <!-- Page Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h2 style="color: var(--primary-color);">Government Complaint Dashboard</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Overview of citizen grievances, AI priority scores, and department routing</p>
+      </div>
+      <div style="display: flex; gap: 0.75rem;">
+        <button class="btn btn-secondary" onclick="loadDashboardData()" style="font-size: 0.85rem;">
+          🔄 Refresh Data
+        </button>
+        <button class="btn btn-secondary" onclick="handleLogout()" style="font-size: 0.85rem; background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5;">
+          🚪 Log Out
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Summary Row -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="statTotal">-</div>
+        <div class="stat-label">Total Complaints</div>
+      </div>
+      <div class="stat-card" style="border-top: 4px solid var(--priority-critical);">
+        <div class="stat-number" id="statCritical" style="color: var(--priority-critical);">-</div>
+        <div class="stat-label">Critical Priority</div>
+      </div>
+      <div class="stat-card" style="border-top: 4px solid var(--priority-high);">
+        <div class="stat-number" id="statHigh" style="color: var(--priority-high);">-</div>
+        <div class="stat-label">High Priority</div>
+      </div>
+      <div class="stat-card" style="border-top: 4px solid #3b82f6;">
+        <div class="stat-number" id="statPending" style="color: #3b82f6;">-</div>
+        <div class="stat-label">Pending / In Progress</div>
+      </div>
+      <div class="stat-card" style="border-top: 4px solid var(--priority-low);">
+        <div class="stat-number" id="statResolved" style="color: var(--priority-low);">-</div>
+        <div class="stat-label">Resolved</div>
+      </div>
+    </div>
+
+    <!-- Cluster / Duplicate Alert Banner (Feature 8 Prototype Demo) -->
+    <div id="duplicateClusterBanner" class="card" style="border-left: 4px solid var(--priority-high); background: #fff7ed; margin-bottom: 2rem; display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+          <span style="font-weight: 700; color: #c2410c; font-size: 0.85rem; text-transform: uppercase;">⚠️ Cluster / Duplicate Detected</span>
+          <h4 style="margin: 0.2rem 0; color: #9a3412;">Issue Cluster: Pothole near Central Bus Stand</h4>
+          <p style="font-size: 0.85rem; color: #7c2d12;">
+            Multiple citizen complaints appear to describe the exact same issue location. Grouped for official department efficiency.
+          </p>
+        </div>
+        <span class="badge badge-high" id="clusterCountBadge">Duplicates Linked</span>
+      </div>
+    </div>
+
+    <!-- Filters and Complaints List -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <h3 class="card-title" style="margin-bottom: 0;">Recent Complaints</h3>
+        
+        <!-- Filters -->
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <select id="filterPriority" class="form-control" style="width: auto; padding: 0.4rem 0.8rem; font-size: 0.85rem;" onchange="applyFilters()">
+            <option value="">All Priorities</option>
+            <option value="CRITICAL">🔴 Critical</option>
+            <option value="HIGH">🟠 High</option>
+            <option value="MEDIUM">🟡 Medium</option>
+            <option value="LOW">🟢 Low</option>
+          </select>
+
+          <select id="filterDepartment" class="form-control" style="width: auto; padding: 0.4rem 0.8rem; font-size: 0.85rem;" onchange="applyFilters()">
+            <option value="">All Departments</option>
+            <option value="Public Works">Public Works</option>
+            <option value="Sanitation">Sanitation</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Water Authority">Water Authority</option>
+          </select>
+
+          <select id="filterStatus" class="form-control" style="width: auto; padding: 0.4rem 0.8rem; font-size: 0.85rem;" onchange="applyFilters()">
+            <option value="">All Statuses</option>
+            <option value="Submitted">Submitted</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Table / Cards view -->
+      <div id="complaintsTableContainer">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-muted);">
+              <th style="padding: 0.75rem;">ID</th>
+              <th style="padding: 0.75rem;">Description</th>
+              <th style="padding: 0.75rem;">Category</th>
+              <th style="padding: 0.75rem;">Department</th>
+              <th style="padding: 0.75rem;">Priority</th>
+              <th style="padding: 0.75rem;">Status</th>
+              <th style="padding: 0.75rem;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="complaintsList">
+            <tr>
+              <td colspan="7" style="padding: 2rem; text-align: center; color: var(--text-muted);">Loading live complaints database...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 CivicPulse Hackathon Prototype — Official Officer Portal</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

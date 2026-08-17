@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complaint Details - CivicPulse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="logo-container">
+      <span class="logo-icon">🏛️</span>
+      <div class="logo-text">
+        <h1>CivicPulse Dashboard</h1>
+        <p>Government Officer Portal</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">← Back to Dashboard</a></li>
+      <li><button onclick="handleLogout()" class="btn btn-secondary" style="padding: 0.3rem 0.7rem; font-size: 0.8rem; background: rgba(255,255,255,0.2); color: white; border: none;">Logout</button></li>
+    </ul>
+  </header>
+
+  <main class="container" style="max-width: 800px;">
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+        <div>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Complaint Reference</span>
+          <h2 id="detailId" style="color: var(--primary-color);">Loading...</h2>
+          <p id="detailDate" style="font-size: 0.85rem; color: var(--text-muted);">-</p>
+        </div>
+        <div style="text-align: right;">
+          <div id="detailPriority" style="margin-bottom: 0.5rem;"><span class="badge badge-low">-</span></div>
+          <div id="detailStatus"><span class="badge badge-status">-</span></div>
+        </div>
+      </div>
+
+      <!-- Detail Grid -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+        <div>
+          <h4 style="font-size: 0.85rem; color: var(--text-muted);">Category</h4>
+          <p id="detailCategory" style="font-weight: 600; font-size: 1rem;">-</p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.85rem; color: var(--text-muted);">Assigned Department</h4>
+          <p id="detailDept" style="font-weight: 600; font-size: 1rem;">-</p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.85rem; color: var(--text-muted);">Location</h4>
+          <p id="detailLocation" style="font-weight: 600; font-size: 1rem;">-</p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.85rem; color: var(--text-muted);">Duplicate Status</h4>
+          <p id="detailDuplicate" style="font-weight: 600; font-size: 1rem; color: #64748b;">-</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.5rem; background: #f8fafc; padding: 1.25rem; border-radius: var(--radius);">
+        <h4 style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Full Citizen Description</h4>
+        <p id="detailDesc" style="font-size: 1rem; color: var(--text-main);">
+          Loading complaint details...
+        </p>
+      </div>
+
+      <!-- Action Panel for Officer -->
+      <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h4 style="font-size: 0.9rem; margin-bottom: 0.25rem;">Officer Action</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">Update current status of this grievance</p>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary" onclick="updateComplaintStatus('In Progress')">
+            ⚙️ Mark In Progress
+          </button>
+          <button class="btn btn-success" onclick="updateComplaintStatus('Resolved')">
+            ✅ Mark as Resolved
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 CivicPulse Hackathon Prototype</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

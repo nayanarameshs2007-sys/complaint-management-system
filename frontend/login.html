@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Officer Login - CivicPulse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="logo-container">
+      <span class="logo-icon">🏛️</span>
+      <div class="logo-text">
+        <h1>CivicPulse</h1>
+        <p>Smart Citizen Complaint System</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="submit.html">Submit Complaint</a></li>
+      <li><a href="track.html">Track Complaint</a></li>
+      <li><a href="login.html" class="active">Officer Portal <span class="officer-badge">Officer</span></a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <div class="card" style="max-width: 480px; margin: 3rem auto; padding: 2.5rem;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🛡️</div>
+        <h2 style="color: var(--primary-color); margin-bottom: 0.5rem;">Officer Authentication</h2>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">
+          Official login portal for government department personnel and administrators
+        </p>
+      </div>
+
+      <form id="loginForm" onsubmit="handleOfficerLogin(event)">
+        <div class="form-group">
+          <label for="officerId">Officer Designation / ID *</label>
+          <input 
+            type="text" 
+            id="officerId" 
+            class="form-control" 
+            placeholder="e.g. OFF-1002" 
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="department">Assigned Department *</label>
+          <select id="department" class="form-control" required>
+            <option value="" disabled selected>Select Department</option>
+            <option value="All">All Departments (Administrator)</option>
+            <option value="Public Works">Public Works Department</option>
+            <option value="Sanitation">Sanitation Department</option>
+            <option value="Electrical">Electrical Department</option>
+            <option value="Water Authority">Water Authority</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input 
+            type="password" 
+            id="password" 
+            class="form-control" 
+            placeholder="Enter secure password" 
+            required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 0.85rem;">
+          🔐 Sign In to Officer Dashboard
+        </button>
+      </form>
+
+      <!-- Demo Help Card -->
+      <div style="margin-top: 1.75rem; padding: 1rem; background: #f8fafc; border-radius: var(--radius); border: 1px solid var(--border-color); font-size: 0.82rem; color: var(--text-muted);">
+        <strong style="color: var(--primary-color);">💡 Demo Access Note:</strong>
+        <br>
+        Enter any Officer ID (e.g. <code>OFF-1001</code>) and Password (e.g. <code>admin123</code>) to authenticate as a government official.
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 CivicPulse Official Grievance Portal — Authorized Access Only</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis Result - CivicPulse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="logo-container">
+      <span class="logo-icon">🏛️</span>
+      <div class="logo-text">
+        <h1>CivicPulse</h1>
+        <p>Smart Citizen Complaint System</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="submit.html">Submit Complaint</a></li>
+      <li><a href="track.html">Track Complaint</a></li>
+      <li><a href="login.html">Officer Portal <span class="officer-badge">Officer</span></a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <div class="card" style="max-width: 650px; margin: 0 auto; text-align: center;">
+      <div style="font-size: 3rem; margin-bottom: 0.5rem;">✅</div>
+      <h2 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Complaint Submitted Successfully!</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Your complaint ID is <strong id="resId" style="color: var(--primary-color); font-size: 1.1rem;">CMP-1001</strong>
+      </p>
+
+      <div style="background: #f1f5f9; padding: 1.5rem; border-radius: var(--radius); text-align: left; margin-bottom: 1.5rem;">
+        <h4 style="color: var(--primary-color); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+          ⚡ AI Automated Analysis & Routing
+        </h4>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Category</span>
+            <p id="resCategory" style="font-weight: 600; font-size: 1rem;">🚧 Road Damage</p>
+          </div>
+          <div>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Priority Level</span>
+            <p id="resPriority"><span class="badge badge-high">🟠 HIGH</span></p>
+          </div>
+          <div>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Assigned Department</span>
+            <p id="resDepartment" style="font-weight: 600; font-size: 1rem;">Public Works Department</p>
+          </div>
+          <div>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Status</span>
+            <p id="resStatus"><span class="badge badge-status">Submitted</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a id="trackLink" href="track.html?id=CMP-1001" class="btn btn-primary">
+          🔍 Track Complaint Status
+        </a>
+        <a href="submit.html" class="btn btn-secondary">
+          ➕ Submit Another Complaint
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 CivicPulse Hackathon Prototype</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Citizen Grievance Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="logo-container">
+      <span class="logo-icon">🏛️</span>
+      <div class="logo-text">
+        <h1>CivicPulse</h1>
+        <p>Smart Citizen Complaint System</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="submit.html">Submit Complaint</a></li>
+      <li><a href="track.html">Track Complaint</a></li>
+      <li><a href="login.html">Officer Portal <span class="officer-badge">Officer</span></a></li>
+    </ul>
+  </header>
+
+  <!-- Main Hero Section -->
+  <main class="container">
+    <div class="card" style="text-align: center; padding: 3rem 1.5rem;">
+      <h2 style="font-size: 2.2rem; color: var(--primary-color); margin-bottom: 1rem;">
+        Smart Citizen Grievance System
+      </h2>
+      <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 2rem;">
+        Report problems in your neighborhood. AI automatically categorizes, prioritizes, and routes your issue to the correct department for fast resolution.
+      </p>
+
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="submit.html" class="btn btn-primary" style="font-size: 1.1rem;">
+          📢 Report a Complaint
+        </a>
+        <a href="track.html" class="btn btn-secondary" style="font-size: 1.1rem;">
+          🔍 Track Status
+        </a>
+      </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <h3 style="margin-bottom: 1rem; color: var(--primary-color);">How It Works</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      <div class="card" style="margin-bottom: 0;">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">1️⃣</div>
+        <h4 style="margin-bottom: 0.5rem;">Submit Complaint</h4>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Describe your issue and location. Upload an optional photo.</p>
+      </div>
+      <div class="card" style="margin-bottom: 0;">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">2️⃣</div>
+        <h4 style="margin-bottom: 0.5rem;">AI Analysis</h4>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">System auto-assigns category, urgency priority, and department.</p>
+      </div>
+      <div class="card" style="margin-bottom: 0;">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">3️⃣</div>
+        <h4 style="margin-bottom: 0.5rem;">Department Routing</h4>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Assigned directly to the concerned officer for quick action.</p>
+      </div>
+      <div class="card" style="margin-bottom: 0;">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">4️⃣</div>
+        <h4 style="margin-bottom: 0.5rem;">Live Tracking</h4>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Get full visibility from submission to resolution.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 CivicPulse Hackathon Prototype — Citizen Complaint Management System</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report a Complaint - CivicPulse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="logo-container">
+      <span class="logo-icon">🏛️</span>
+      <div class="logo-text">
+        <h1>CivicPulse</h1>
+        <p>Smart Citizen Complaint System</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="submit.html" class="active">Submit Complaint</a></li>
+      <li><a href="track.html">Track Complaint</a></li>
+      <li><a href="login.html">Officer Portal <span class="officer-badge">Officer</span></a></li>
+    </ul>
+  </header>
+
+  <!-- Form Container -->
+  <main class="container">
+    <div class="card" style="max-width: 650px; margin: 0 auto;">
+      <h2 class="card-title">📝 Report a Complaint</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">
+        Fill in the details below. Our automated AI system will route your complaint to the appropriate department.
+      </p>
+
+      <form id="complaintForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="description">Complaint Description *</label>
+          <textarea 
+            id="description" 
+            class="form-control" 
+            placeholder="Describe your problem clearly (e.g. There is a large pothole near the bus stand causing heavy traffic...)" 
+            required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location *</label>
+          <input 
+            type="text" 
+            id="location" 
+            class="form-control" 
+            placeholder="e.g. Central Bus Stand, Main Street, Ward 4" 
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="image">Upload Image (Optional)</label>
+          <input type="file" id="image" class="form-control" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          🚀 Submit Complaint & Analyze
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 CivicPulse Hackathon Prototype</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
