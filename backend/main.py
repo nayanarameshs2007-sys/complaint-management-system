@@ -1,4 +1,10 @@
 import os
+import sys
+from typing import Optional
+
+# Ensure backend directory is in sys.path for direct module resolution
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
